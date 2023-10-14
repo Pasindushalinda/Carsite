@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import AuctionCard from './AuctionCard';
 import AppPagination from '../component/AppPagination';
 import { getData } from '../actions/auctionAction';
-import { Auction, PagedResult } from '../types';
+import { Auction, PagedResult } from '../../types';
 import Filters from './Filters';
 import { useParamsStore } from '@/hooks/useParamsStore';
 import { shallow } from 'zustand/shallow';
@@ -18,7 +18,9 @@ export default function Listing() {
         pageSize: state.pageSize,
         searchTerm: state.searchTerm,
         orderBy: state.orderBy,
-        filterBy: state.filterBy
+        filterBy: state.filterBy,
+        seller: state.seller,
+        winner: state.winner,
     }), shallow)
     const setParams = useParamsStore(state => state.setParams);
     const url = qs.stringifyUrl({ url: '', query: params })
